@@ -1,0 +1,12 @@
+/Users/leoshin/Documents/GitHub/SpotifyAssort/spotify_assort/target/debug/deps/tempfile-1699afebbd749f6b.rmeta: /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/lib.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/dir.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/error.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/file/mod.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/file/imp/mod.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/spooled.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/util.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/file/imp/unix.rs
+
+/Users/leoshin/Documents/GitHub/SpotifyAssort/spotify_assort/target/debug/deps/tempfile-1699afebbd749f6b.d: /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/lib.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/dir.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/error.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/file/mod.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/file/imp/mod.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/spooled.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/util.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/file/imp/unix.rs
+
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/lib.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/dir.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/error.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/file/mod.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/file/imp/mod.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/spooled.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/util.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-3.2.0/src/file/imp/unix.rs:

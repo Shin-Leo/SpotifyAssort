@@ -1,0 +1,10 @@
+/Users/leoshin/Documents/GitHub/SpotifyAssort/spotify_assort/target/debug/deps/rustc_serialize-35e67eadabddc741.rmeta: /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/lib.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/serialize.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/collection_impls.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/base64.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/hex.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/json.rs
+
+/Users/leoshin/Documents/GitHub/SpotifyAssort/spotify_assort/target/debug/deps/rustc_serialize-35e67eadabddc741.d: /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/lib.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/serialize.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/collection_impls.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/base64.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/hex.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/json.rs
+
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/lib.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/serialize.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/collection_impls.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/base64.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/hex.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.24/src/json.rs:
