@@ -1,9 +1,11 @@
-extern crate reqwest;
-extern crate tokio;
-use rspotify::{prelude::*, scopes, AuthCodeSpotify, Config, Credentials, OAuth, Token};
-use std::fs;
-extern crate env_logger;
-use std::{collections::HashMap, env, path::PathBuf};
+use futures::stream::TryStreamExt;
+use futures_util::pin_mut;
+use rspotify::{
+    model::{FullTrack, PlayableItem, PlaylistItem},
+    prelude::*,
+    scopes, AuthCodeSpotify, Credentials, OAuth,
+};
+use std::collections::HashMap;
 
 #[tokio::main]
 async fn main() {
@@ -11,31 +13,37 @@ async fn main() {
 
     let creds = Credentials::from_env().unwrap();
 
-    let scopes = scopes!(
-        "user-top-read",
-        "user-read-recently-played",
-        "user-library-read",
-        "user-read-currently-playing",
-        "user-read-playback-state",
-        "user-read-playback-position",
-        "playlist-read-private",
-        "user-library-modify",
-        "user-modify-playback-state",
-        "playlist-modify-public",
-        "playlist-modify-private"
-    );
-
-    let oauth = OAuth::from_env(scopes).unwrap();
+    let oauth = OAuth::from_env(scopes!("user-read-playback-state")).unwrap();
 
     let mut spotify = AuthCodeSpotify::new(creds, oauth);
 
     let url = spotify.get_authorize_url(false).unwrap();
     spotify.prompt_for_token(&url).await.unwrap();
+    let user = spotify.me();
+    let user_id = user.await.unwrap().id;
+    let stream = spotify.user_playlists(&user_id);
+    pin_mut!(stream);
+    let mut playlists = HashMap::new();
 
-    let token = spotify.token.lock().await.unwrap();
-    println!("Access token: {}", &token.as_ref().unwrap().access_token);
-    println!(
-        "Refresh token: {}",
-        token.as_ref().unwrap().refresh_token.as_ref().unwrap()
+    while let Some(item) = stream.try_next().await.unwrap() {
+        let playlist_id = item.id;
+        let playlist_name = item.name;
+        playlists.insert(playlist_name, playlist_id);
+    }
+
+    let mut track_stream = spotify.playlist_items(
+        &playlists
+            .get("Japanese songs that i am extremely fond of")
+            .unwrap(),
+        None,
+        None,
     );
+
+    while let Some(item) = track_stream.try_next().await.unwrap() {
+        let playable_item = item.track.unwrap();
+        match playable_item {
+            PlayableItem::Track(track) => println!("* {}", track.name),
+            PlayableItem::Episode(episode) => println!("* {}", episode.name),
+        }
+    }
 }
