@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/Users/leoshin/Documents/GitHub/SpotifyAssort/spotify_assort/target/debug/build/typenum-b771543d1b36e370/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/Users/leoshin/Documents/GitHub/SpotifyAssort/spotify_assort/target/debug/build/typenum-b771543d1b36e370/out/op.rs

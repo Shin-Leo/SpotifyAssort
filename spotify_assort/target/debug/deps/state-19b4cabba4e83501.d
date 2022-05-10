@@ -1,0 +1,11 @@
+/Users/leoshin/Documents/GitHub/SpotifyAssort/spotify_assort/target/debug/deps/state-19b4cabba4e83501.rmeta: /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/lib.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/ident_hash.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/container.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/storage.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/init.rs
+
+/Users/leoshin/Documents/GitHub/SpotifyAssort/spotify_assort/target/debug/deps/libstate-19b4cabba4e83501.rlib: /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/lib.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/ident_hash.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/container.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/storage.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/init.rs
+
+/Users/leoshin/Documents/GitHub/SpotifyAssort/spotify_assort/target/debug/deps/state-19b4cabba4e83501.d: /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/lib.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/ident_hash.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/container.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/storage.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/init.rs
+
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/lib.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/ident_hash.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/container.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/storage.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/state-0.4.2/src/init.rs:

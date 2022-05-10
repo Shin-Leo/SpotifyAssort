@@ -1,0 +1,7 @@
+/Users/leoshin/Documents/GitHub/SpotifyAssort/spotify_assort/target/debug/deps/aes_gcm-cdc400123a193e02.rmeta: /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/aes-gcm-0.8.0/src/lib.rs
+
+/Users/leoshin/Documents/GitHub/SpotifyAssort/spotify_assort/target/debug/deps/libaes_gcm-cdc400123a193e02.rlib: /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/aes-gcm-0.8.0/src/lib.rs
+
+/Users/leoshin/Documents/GitHub/SpotifyAssort/spotify_assort/target/debug/deps/aes_gcm-cdc400123a193e02.d: /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/aes-gcm-0.8.0/src/lib.rs
+
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/aes-gcm-0.8.0/src/lib.rs:
