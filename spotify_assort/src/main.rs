@@ -11,9 +11,10 @@ use serde::ser::SerializeMap;
 use serde_json::json;
 use serde_json::Value;
 
+use rocket::Build;
+use rspotify::clients::mutex::Mutex;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-
 use std::sync::Arc;
 
 use getrandom::getrandom;
@@ -40,7 +41,7 @@ pub enum AppResponse {
     Json(Value),
 }
 
-const CACHE_PATH: &str = ".spotify_cache/";
+const CACHE_PATH: &str = ".spotify_cache/.spotify_token_cache.json";
 
 fn generate_random_uuid(length: usize) -> String {
     let alphanum: &[u8] =
@@ -59,7 +60,6 @@ fn get_cache_path(cookies: &CookieJar) -> PathBuf {
     let mut cache_path = project_dir_path;
     cache_path.push(CACHE_PATH);
     // cache_path.push(cookies.get("uuid").unwrap().value());
-
     cache_path
 }
 
@@ -101,18 +101,15 @@ fn init_spotify(cookies: &CookieJar) -> AuthCodeSpotify {
 }
 
 #[get("/callback?<code>")]
-async fn callback(cookies: &CookieJar<'_>, code: String) -> AppResponse {
+fn callback(cookies: &CookieJar<'_>, code: String) -> AppResponse {
     let mut spotify = init_spotify(&cookies);
-    let prefix = "http://localhost:8000/callback?code=";
-    println!("{}", "http://localhost:8000/callback?code=" + code);
-
-    match spotify.request_token(&code).await {
+    match spotify.request_token(&code) {
         Ok(_) => {
             println!("Request user token successful");
             AppResponse::Redirect(Redirect::to("/"))
         }
         Err(err) => {
-            println!("Failed to get user token {:?}", err);
+            println!("Failed to get user token {:?}", err.to_string());
             let mut context = HashMap::new();
             context.insert("err_msg", "Failed to get token!");
             AppResponse::Template(Template::render("error", context))
@@ -126,7 +123,8 @@ async fn index(mut cookies: &CookieJar<'_>) -> AppResponse {
 
     // The user is authenticated if their cookie is set and a cache exists for
     // them.
-    let authenticated = cookies.get("uuid").is_some() && check_cache_path_exists(&cookies);
+
+    let authenticated = cookies.get("uuid").is_some() || check_cache_path_exists(&cookies);
     if !authenticated {
         cookies.add(Cookie::new("uuid", generate_random_uuid(64)));
 
@@ -135,11 +133,10 @@ async fn index(mut cookies: &CookieJar<'_>) -> AppResponse {
         context.insert("auth_url", auth_url);
         return AppResponse::Template(Template::render("authorize", context));
     }
-
     let cache_path = get_cache_path(&cookies);
     let token = Token::from_cache(cache_path).unwrap();
     let spotify = AuthCodeSpotify::from_token(token);
-    match spotify.me().await {
+    match spotify.me() {
         Ok(user_info) => {
             context.insert(
                 "display_name",
@@ -163,43 +160,46 @@ fn sign_out(cookies: &CookieJar<'_>) -> AppResponse {
 }
 
 #[get("/playlists")]
-async fn playlist(cookies: &CookieJar<'_>) -> AppResponse {
+fn playlist(cookies: &CookieJar<'_>) -> AppResponse {
     let mut spotify = init_spotify(&cookies);
     if !spotify.config.cache_path.exists() {
         return AppResponse::Redirect(Redirect::to("/"));
     }
 
-    let token = spotify.read_token_cache(false).await.unwrap();
-    let playlists = spotify.current_user_playlists().take(50).map(Result::ok);
-    // AppResponse::Json(json!(serde_json::to_string(&playlists).unwrap()))
-    AppResponse::Redirect(Redirect::to("/"))
+    let token = spotify.read_token_cache(false).unwrap();
+
+    spotify.token = Arc::new(Mutex::new(token));
+    let playlists = spotify
+        .current_user_playlists()
+        .take(50)
+        .filter_map(Result::ok)
+        .collect::<Vec<_>>();
+
+    if playlists.is_empty() {
+        return AppResponse::Redirect(Redirect::to("/"));
+    }
+
+    AppResponse::Json(json!(playlists))
 }
 
 #[get("/me")]
-async fn me(cookies: &CookieJar<'_>) -> AppResponse {
+fn me(cookies: &CookieJar<'_>) -> AppResponse {
     let mut spotify = init_spotify(&cookies);
     if !spotify.config.cache_path.exists() {
         return AppResponse::Redirect(Redirect::to("/"));
     }
-    let token = spotify.read_token_cache(false).await.unwrap();
-    match spotify.me().await {
+
+    spotify.token = Arc::new(Mutex::new(spotify.read_token_cache(false).unwrap()));
+    match spotify.me() {
         Ok(user_info) => AppResponse::Json(json!(user_info)),
         Err(_) => AppResponse::Redirect(Redirect::to("/")),
     }
 }
-
-#[rocket::main]
-async fn main() {
-    if let Err(e) = rocket::build()
+#[launch]
+fn rocket() -> Rocket<Build> {
+    rocket::build()
         .mount("/", routes![index, callback, sign_out, me, playlist])
         .attach(Template::fairing())
-        .launch()
-        .await
-    {
-        println!("Whoops! Rocket didn't launch!");
-        // We drop the error to get a Rocket-formatted panic.
-        drop(e);
-    };
 }
 
 // #[tokio::main]

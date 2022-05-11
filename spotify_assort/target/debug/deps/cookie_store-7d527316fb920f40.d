@@ -1,0 +1,11 @@
+/Users/leoshin/Documents/GitHub/SpotifyAssort/spotify_assort/target/debug/deps/cookie_store-7d527316fb920f40.rmeta: /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/lib.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/cookie.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/cookie_domain.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/cookie_expiration.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/cookie_path.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/cookie_store.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/utils.rs
+
+/Users/leoshin/Documents/GitHub/SpotifyAssort/spotify_assort/target/debug/deps/cookie_store-7d527316fb920f40.d: /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/lib.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/cookie.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/cookie_domain.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/cookie_expiration.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/cookie_path.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/cookie_store.rs /Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/utils.rs
+
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/lib.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/cookie.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/cookie_domain.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/cookie_expiration.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/cookie_path.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/cookie_store.rs:
+/Users/leoshin/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie_store-0.15.1/src/utils.rs:

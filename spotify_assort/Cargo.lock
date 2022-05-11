@@ -1922,12 +1922,9 @@ version = "0.11.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f1e20ceabb52376647badaaf6d65dd068c963537dd82c705cd0af7621132a0bb"
 dependencies = [
- "async-stream",
- "async-trait",
  "base64",
  "chrono",
  "dotenv",
- "futures",
  "getrandom",
  "log",
  "maybe-async",
@@ -1939,7 +1936,6 @@ dependencies = [
  "sha2",
  "thiserror",
  "url",
- "webbrowser 0.6.0",
 ]
 
 [[package]]
@@ -1963,12 +1959,11 @@ version = "0.11.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5fe28fe911336a08629c48241988d9f6f338babb69ef18d00d9bfdc7280ceb95"
 dependencies = [
- "async-trait",
  "log",
  "maybe-async",
- "reqwest",
  "serde_json",
  "thiserror",
+ "ureq",
 ]
 
 [[package]]
@@ -2325,7 +2320,7 @@ dependencies = [
  "thiserror",
  "tokio",
  "url",
- "webbrowser 0.7.1",
+ "webbrowser",
 ]
 
 [[package]]
@@ -3021,20 +3016,6 @@ checksum = "38eb105f1c59d9eaa6b5cdc92b859d85b926e82cb2e0945cd0c9259faa6fe9fb"
 dependencies = [
  "js-sys",
  "wasm-bindgen",
-]
-
-[[package]]
-name = "webbrowser"
-version = "0.6.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f9c28b6b6a78440b02647358625e3febc90724126480b9da6a967b5f674b3554"
-dependencies = [
- "jni",
- "ndk-glue",
- "url",
- "web-sys",
- "widestring",
- "winapi 0.3.9",
 ]
 
 [[package]]
