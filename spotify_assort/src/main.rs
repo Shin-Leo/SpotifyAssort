@@ -3,33 +3,22 @@
 #[macro_use]
 extern crate rocket;
 
-use chrono::naive::serde::ts_milliseconds::serialize;
-use chrono::naive::serde::ts_nanoseconds::deserialize;
-use futures::StreamExt;
-use futures::TryStreamExt;
-use serde::ser::SerializeMap;
 use serde_json::json;
 use serde_json::Value;
 
 use rocket::Build;
 use rspotify::clients::mutex::Mutex;
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 use std::collections::HashMap;
 use std::sync::Arc;
 
 use getrandom::getrandom;
-use json::JsonValue;
-use rocket::fairing::Fairing;
+use rocket::http::Cookie;
 use rocket::http::CookieJar;
 use rocket::response::Redirect;
 use rocket::Rocket;
-use rocket::{http::Cookie, request::FromRequest};
 use rocket_dyn_templates::Template;
-use rspotify::{
-    model::{FullTrack, PlayableItem, PlaylistItem},
-    prelude::*,
-    scopes, AuthCodeSpotify, Config, Credentials, OAuth, Token,
-};
+use rspotify::{prelude::*, scopes, AuthCodeSpotify, Config, Credentials, OAuth, Token};
 
 use std::fs;
 use std::{env, path::PathBuf};
@@ -39,6 +28,12 @@ pub enum AppResponse {
     Template(Template),
     Redirect(Redirect),
     Json(Value),
+}
+
+#[derive(Serialize)]
+struct PlaylistDetail {
+    name: String,
+    cover: String,
 }
 
 const CACHE_PATH: &str = ".spotify_cache/.spotify_token_cache.json";
@@ -73,7 +68,7 @@ fn create_cache_path_if_absent(cookies: &CookieJar) -> PathBuf {
     cache_path
 }
 
-fn remove_cache_path(mut cookies: &CookieJar<'_>) {
+fn remove_cache_path(cookies: &CookieJar<'_>) {
     let cache_path = get_cache_path(&cookies);
     if cache_path.exists() {
         fs::remove_file(cache_path).unwrap()
@@ -118,7 +113,7 @@ fn callback(cookies: &CookieJar<'_>, code: String) -> AppResponse {
 }
 
 #[get("/")]
-async fn index(mut cookies: &CookieJar<'_>) -> AppResponse {
+async fn index(cookies: &CookieJar<'_>) -> AppResponse {
     let mut context = HashMap::new();
 
     // The user is authenticated if their cookie is set and a cache exists for
@@ -161,6 +156,8 @@ fn sign_out(cookies: &CookieJar<'_>) -> AppResponse {
 
 #[get("/playlists")]
 fn playlist(cookies: &CookieJar<'_>) -> AppResponse {
+    let mut context = HashMap::new();
+    let mut playlists_details = vec![];
     let mut spotify = init_spotify(&cookies);
     if !spotify.config.cache_path.exists() {
         return AppResponse::Redirect(Redirect::to("/"));
@@ -179,7 +176,17 @@ fn playlist(cookies: &CookieJar<'_>) -> AppResponse {
         return AppResponse::Redirect(Redirect::to("/"));
     }
 
-    AppResponse::Json(json!(playlists))
+    for playlist in playlists.into_iter() {
+        let image = &playlist.images[0];
+        let playlist_detail = PlaylistDetail {
+            name: playlist.name,
+            cover: image.url.clone(),
+        };
+        playlists_details.push(playlist_detail);
+    }
+    context.insert("playlists".to_string(), playlists_details);
+
+    AppResponse::Template(Template::render("playlists", context))
 }
 
 #[get("/me")]
