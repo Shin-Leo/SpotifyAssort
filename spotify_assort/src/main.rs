@@ -6,6 +6,7 @@ extern crate rocket;
 use serde_json::json;
 use serde_json::Value;
 
+use rocket::fs::{relative, FileServer};
 use rocket::Build;
 use rspotify::clients::mutex::Mutex;
 use serde::Serialize;
@@ -205,6 +206,7 @@ fn me(cookies: &CookieJar<'_>) -> AppResponse {
 #[launch]
 fn rocket() -> Rocket<Build> {
     rocket::build()
+        .mount("/", FileServer::from(relative!("static")))
         .mount("/", routes![index, callback, sign_out, me, playlist])
         .attach(Template::fairing())
 }
